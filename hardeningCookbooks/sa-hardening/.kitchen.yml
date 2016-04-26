@@ -1,18 +1,22 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: emea-sa-shared
+  region: eu-west-1
+  availability_zone: a
+  instance_type: t2.micro
+  security_group_ids: ['sg-50658837']
+  subnet_id: subnet-4bdd1d2f
+  retryable_tries: 120
 
 provisioner:
-  name: chef_zero
-
-# Uncomment the following verifier to leverage Inspec instead of Busser (the
-# default verifier)
-# verifier:
-#   name: inspec
+  name: chef_solo
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-7.1
+  - name: rhel-7
+
+transport:
+  ssh_key: ~/.ssh/emea-sa-shared
 
 suites:
   - name: default

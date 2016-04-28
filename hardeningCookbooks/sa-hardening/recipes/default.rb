@@ -33,3 +33,11 @@ end
   end
 end
 # End fix for hardening of cronfiles
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_9.1.2_Verify_Permissions_on_etcpasswd
+file '/etc/passwd' do
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_9.1.2_Verify_Permissions_on_etcpasswd

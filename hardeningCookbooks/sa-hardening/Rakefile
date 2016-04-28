@@ -92,7 +92,6 @@ require 'json'
       environment: "default",
     loginUser: "ec2-user",
     loginMethod: "ssh",
-    loginKey: "#{username}/emea-sa-shared",
-    disableSudo: true
+    loginKey: "#{username}/emea-sa-shared"
       }].to_json
   end

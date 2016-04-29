@@ -49,3 +49,11 @@ delete_lines "Remove no default banner comment" do
   pattern "# no default banner path"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.9_Set_SSH_PermitEmptyPasswords_to_No
+replace_or_add "Set SSH PermitEmptyPasswords to No" do
+  path "/etc/ssh/sshd_config"
+  pattern "PermitEmptyPasswords.*"
+  line "PermitEmptyPasswords no"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.9_Set_SSH_PermitEmptyPasswords_to_No

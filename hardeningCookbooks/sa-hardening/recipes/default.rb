@@ -79,3 +79,11 @@ replace_or_add "Disable SSH X11 Forwarding" do
   line "X11Forwarding no"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.4_Disable_SSH_X11_Forwarding
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes
+replace_or_add "Set SSH IgnoreRhosts to Yes" do
+  path "/etc/ssh/sshd_config"
+  pattern "IgnoreRhosts.*"
+  line "IgnoreRhosts yes"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes

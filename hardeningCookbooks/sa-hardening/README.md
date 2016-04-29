@@ -1,6 +1,11 @@
 # sa-hardening
 
-This cookbook provides recipes for ensuring that a RHEL-7 system is compliant with the Lightweight CIS-L1 Chef Compliance profile
+This cookbook provides recipes for ensuring that a RHEL-7 system is compliant with the Lightweight CIS-L1 Chef Compliance profile.
+
+## Coding guidelines
+
+Use Chef resources wherever possible.  The line cookbook is included for making line by line substitutions in config files.  See the `enable_sudo_no_tty.rb` for
+a usage example.
 
 ## Testing the cookbook
 

@@ -57,3 +57,11 @@ replace_or_add "Set SSH PermitEmptyPasswords to No" do
   line "PermitEmptyPasswords no"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.9_Set_SSH_PermitEmptyPasswords_to_No
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.8_Disable_SSH_Root_Login
+replace_or_add "Disable SSH Root Login" do
+  path "/etc/ssh/sshd_config"
+  pattern "PermitRootLogin.*"
+  line "PermitRootLogin no"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.8_Disable_SSH_Root_Login

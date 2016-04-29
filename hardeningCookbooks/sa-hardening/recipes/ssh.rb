@@ -65,3 +65,11 @@ replace_or_add "Disable SSH Root Login" do
   line "PermitRootLogin no"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.8_Disable_SSH_Root_Login
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.7_Set_SSH_HostbasedAuthentication_to_No
+replace_or_add "Set SSH HostbasedAuthentication to No" do
+  path "/etc/ssh/sshd_config"
+  pattern "HostbasedAuthentication.*"
+  line "HostbasedAuthentication no"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.7_Set_SSH_HostbasedAuthentication_to_No

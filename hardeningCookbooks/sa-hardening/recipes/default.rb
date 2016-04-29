@@ -54,7 +54,7 @@ replace_or_add "SSH Protocol" do
   pattern "Protocol 1"
   line "Protocol 2"
 end
-#End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.1_Set_SSH_Protocol_to_2
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.1_Set_SSH_Protocol_to_2
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
 replace_or_add "Restrict su Command" do
@@ -62,7 +62,7 @@ replace_or_add "Restrict su Command" do
   pattern ".*pam_wheel.so use_uid"
   line "auth            required        pam_wheel.so use_uid"
 end
-#End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
+# End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less
 replace_or_add "SSH MaxAuthTries" do
@@ -70,4 +70,12 @@ replace_or_add "SSH MaxAuthTries" do
   pattern "MaxAuthTries.*"
   line "MaxAuthTries 4"
 end
-#End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.4_Disable_SSH_X11_Forwarding
+replace_or_add "Disable SSH X11 Forwarding" do
+  path "/etc/ssh/sshd_config"
+  pattern "X11Forwarding.*"
+  line "X11Forwarding no"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.4_Disable_SSH_X11_Forwarding

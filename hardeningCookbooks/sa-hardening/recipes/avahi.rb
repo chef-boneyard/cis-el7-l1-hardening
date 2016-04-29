@@ -3,52 +3,34 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-package 'Install Avahi Libs' do
-  case node["platform_family"]
-  when 'rhel'
-    if node['platform_version'].to_f >= 7.0
+
+case node["platform_family"]
+when 'rhel'
+  if node['platform_version'].to_f >= 7.0
+    package 'Install Avahi Libs' do
       package_name 'avahi-libs'
+      action :install
     end
-  end
-  action :install
-end
 
-package 'Install Avahi Autoipd' do
-  case node["platform_family"]
-  when 'rhel'
-    if node['platform_version'].to_f >= 7.0
+    package 'Install Avahi Autoipd' do
       package_name 'avahi-autoipd'
+      action :install
     end
-  end
-  action :install
-end
 
-package 'Install Avahi' do
-  case node["platform_family"]
-  when 'rhel'
-    if node['platform_version'].to_f >= 7.0
+    package 'Install Avahi' do
       package_name 'avahi'
+      action :install
     end
-  end
-  action :install
-end
 
-service 'avahi-daemon.socket' do
-  case node["platform_family"]
-  when 'rhel'
-    if node['platform_version'].to_f >= 7.0
+    service 'avahi-daemon.socket' do
       provider Chef::Provider::Service::Systemd
+      action [:disable, :stop]
     end
-  end
-  action [:disable, :stop]
-end
 
-service 'avahi-daemon.service' do
-  case node["platform_family"]
-  when 'rhel'
-    if node['platform_version'].to_f >= 7.0
+    service 'avahi-daemon.service' do
       provider Chef::Provider::Service::Systemd
+      action [:disable, :stop]
     end
+
   end
-  action [:disable, :stop]
 end

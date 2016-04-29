@@ -55,3 +55,11 @@ replace_or_add "SSH Protocol" do
   line "Protocol 2"
 end
 #End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.1_Set_SSH_Protocol_to_2
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
+replace_or_add "Restrict su Command" do
+  path "/etc/pam.d/su"
+  pattern ".*pam_wheel.so use_uid"
+  line "auth            required        pam_wheel.so use_uid"
+end
+#End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command

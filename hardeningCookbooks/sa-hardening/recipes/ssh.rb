@@ -36,3 +36,16 @@ replace_or_add "Set SSH IgnoreRhosts to Yes" do
   line "IgnoreRhosts yes"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.14_Set_SSH_Banner
+replace_or_add "Set SSH Banner" do
+  path "/etc/ssh/sshd_config"
+  pattern "Banner.*"
+  line "Banner /etc/ssh/sshd-banner"
+end
+
+delete_lines "Remove no default banner comment" do
+  path "/etc/ssh/sshd_config"
+  pattern "# no default banner path"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes

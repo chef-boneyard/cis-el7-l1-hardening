@@ -63,3 +63,11 @@ replace_or_add "Restrict su Command" do
   line "auth            required        pam_wheel.so use_uid"
 end
 #End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less
+replace_or_add "SSH MaxAuthTries" do
+  path "/etc/ssh/sshd_config"
+  pattern "MaxAuthTries.*"
+  line "MaxAuthTries 4"
+end
+#End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less

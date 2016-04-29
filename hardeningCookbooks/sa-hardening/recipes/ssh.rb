@@ -73,3 +73,25 @@ replace_or_add "Set SSH HostbasedAuthentication to No" do
   line "HostbasedAuthentication no"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.7_Set_SSH_HostbasedAuthentication_to_No
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.2_Set_LogLevel_to_INFO
+replace_or_add "Set LogLevel to INFO" do
+  path "/etc/ssh/sshd_config"
+  pattern "LogLevel.*"
+  line "LogLevel INFO"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.2_Set_LogLevel_to_INFO
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login
+replace_or_add "Set Idle Timeout Interval for User Login - ClientAliveInterval" do
+  path "/etc/ssh/sshd_config"
+  pattern "ClientAliveInterval.*"
+  line "ClientAliveInterval 300"
+end
+
+replace_or_add "Set Idle Timeout Interval for User Login - ClientAliveCountMax" do
+  path "/etc/ssh/sshd_config"
+  pattern "ClientAliveCountMax.*"
+  line "ClientAliveCountMax 0"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login

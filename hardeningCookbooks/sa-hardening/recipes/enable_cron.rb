@@ -26,7 +26,7 @@ when 'rhel'
 
     service 'crond' do
       provider Chef::Provider::Service::Systemd
-      action [:disable, :stop]
+      action [:enable, :start]
     end
 
   end

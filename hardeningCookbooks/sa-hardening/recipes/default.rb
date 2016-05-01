@@ -7,6 +7,7 @@
 # Recipe includes
 include_recipe 'sa-hardening::ssh'
 include_recipe 'sa-hardening::avahi'
+include_recipe 'sa-hardening::enable_cron.rb'
 include_recipe 'sa-hardening::restrict_at_daemon'
 include_recipe 'sa-hardening::restrict_cron'
 

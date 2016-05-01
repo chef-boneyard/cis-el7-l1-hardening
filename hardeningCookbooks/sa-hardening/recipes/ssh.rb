@@ -95,3 +95,13 @@ replace_or_add "Set Idle Timeout Interval for User Login - ClientAliveCountMax" 
   line "ClientAliveCountMax 0"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config
+file '/etc/ssh/sshd_config' do
+  action :create
+  mode 0600
+  owner 0
+  group 0
+end
+
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config

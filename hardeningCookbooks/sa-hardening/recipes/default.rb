@@ -7,6 +7,7 @@
 # Recipe includes
 include_recipe 'sa-hardening::ssh'
 include_recipe 'sa-hardening::avahi'
+include_recipe 'sa-hardening::restrict_at_daemon'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

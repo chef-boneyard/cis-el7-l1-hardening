@@ -30,4 +30,11 @@ when 'rhel'
   end
 # End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
 
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_7.4_Set_Default_umask_for_Users
+  replace_or_add "default umask for /etc/bashrc" do
+    path "/etc/bashrc"
+    pattern "\sumask*"
+    line "umask 077"
+  end
+
 end

@@ -9,6 +9,7 @@ include_recipe 'sa-hardening::ssh'
 include_recipe 'sa-hardening::avahi'
 include_recipe 'sa-hardening::cron'
 include_recipe 'sa-hardening::at_daemon'
+include_recipe 'sa-hardening::user-mgmt'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

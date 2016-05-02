@@ -33,8 +33,8 @@ when 'rhel'
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_7.4_Set_Default_umask_for_Users
   replace_or_add "default umask for /etc/bashrc" do
     path "/etc/bashrc"
-    pattern "\sumask*"
-    line "umask 077"
+    pattern "^\s*umask\s"
+    line "    umask 077"
   end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_7.4_Set_Default_umask_for_Users
 

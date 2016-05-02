@@ -10,6 +10,7 @@ include_recipe 'sa-hardening::avahi'
 include_recipe 'sa-hardening::cron'
 include_recipe 'sa-hardening::at_daemon'
 include_recipe 'sa-hardening::user-mgmt'
+include_recipe 'sa-hardening::network-packet-remediation'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

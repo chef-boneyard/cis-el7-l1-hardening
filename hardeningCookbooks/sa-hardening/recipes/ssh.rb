@@ -96,6 +96,21 @@ replace_or_add "Set Idle Timeout Interval for User Login - ClientAliveCountMax" 
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login
 
+# Begin fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
+replace_or_add "Set a DenyUsers config up" do
+  path "/etc/ssh/sshd_config"
+  pattern "DenyUsers.*"
+  line "DenyUsers root"
+end
+
+replace_or_add "Set a DenyGroups config up" do
+  path "/etc/ssh/sshd_config"
+  pattern "DenyGroups.*"
+  line "DenyGroups root"
+end
+
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
+
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config
 file '/etc/ssh/sshd_config' do
   action :create

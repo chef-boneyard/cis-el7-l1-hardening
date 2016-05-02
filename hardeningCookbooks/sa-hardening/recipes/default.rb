@@ -21,14 +21,6 @@ service 'firewalld' do
 end
 # End fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 
-# Start fix for xccdf_org.cisecurity.benchmarks_rule_9.1.2_Verify_Permissions_on_etcpasswd
-file '/etc/passwd' do
-  mode '0644'
-  owner 'root'
-  group 'root'
-end
-# End fix for xccdf_org.cisecurity.benchmarks_rule_9.1.2_Verify_Permissions_on_etcpasswd
-
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_1.5.2_Set_Permissions_on_bootgrub2grub.cfg
 file '/boot/grub2/grub.cfg' do
   mode '0600'
@@ -36,11 +28,3 @@ file '/boot/grub2/grub.cfg' do
   group 'root'
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_1.5.2_Set_Permissions_on_bootgrub2grub.cfg
-
-# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command
-replace_or_add "Restrict su Command" do
-  path "/etc/pam.d/su"
-  pattern ".*pam_wheel.so use_uid"
-  line "auth            required        pam_wheel.so use_uid"
-end
-# End xccdf_org.cisecurity.benchmarks_rule_6.5_Restrict_Access_to_the_su_Command

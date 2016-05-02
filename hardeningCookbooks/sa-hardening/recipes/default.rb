@@ -7,9 +7,8 @@
 # Recipe includes
 include_recipe 'sa-hardening::ssh'
 include_recipe 'sa-hardening::avahi'
-include_recipe 'sa-hardening::enable_cron'
-include_recipe 'sa-hardening::restrict_at_daemon'
-include_recipe 'sa-hardening::restrict_cron'
+include_recipe 'sa-hardening::cron'
+include_recipe 'sa-hardening::at_daemon'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'
@@ -19,25 +18,6 @@ service 'firewalld' do
   action [ :enable, :start ]
 end
 # End fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
-
-# Start fix for hardening of cronfiles
-['/etc/cron.d', '/etc/cron.monthly', '/etc/cron.weekly',
-  '/etc/cron.daily', '/etc/cron.hourly'].each do |crondir|
-    directory crondir do
-      mode '0700'
-      owner 'root'
-      group 'root'
-    end
-end
-
-['/etc/crontab', '/etc/anacrontab'].each do |cronfile|
-  file cronfile do
-    mode '0700'
-    owner 'root'
-    group 'root'
-  end
-end
-# End fix for hardening of cronfiles
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_9.1.2_Verify_Permissions_on_etcpasswd
 file '/etc/passwd' do

@@ -36,5 +36,7 @@ when 'rhel'
     pattern "\sumask*"
     line "umask 077"
   end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_7.4_Set_Default_umask_for_Users
+
 
 end

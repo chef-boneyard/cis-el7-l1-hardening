@@ -1,8 +1,0 @@
-name: cis-centos6-level1-lite
-title: Lite version of CIS CentOS Linux 6 Benchmark Level 1
-maintainer: EMEA SA team - Chef Software, Inc.
-copyright: Chef Software, Inc.
-copyright_email: support@chef.io
-license: Proprietary, All rights reserved
-summary: Light weight version of the CIS CentOS Linux 6 Benchmark Level 1 translated from SCAP for demo purposes.
-version: '0.1'

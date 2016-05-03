@@ -1,8 +1,0 @@
-This control currently produces a critical error and is not solved by the dev-sec hardening cookbooks.
-
-### Control
-```ruby
-
-[CONTROL HERE]
-
-```

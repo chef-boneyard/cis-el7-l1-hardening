@@ -1,0 +1,33 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: emea-sa-shared
+  region: eu-west-1
+  availability_zone: a
+  instance_type: t2.micro
+  security_group_ids: ['sg-50658837']
+  subnet_id: subnet-4bdd1d2f
+  retryable_tries: 120
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: rhel-7
+
+verifier:
+  name: inspec
+  sudo: true
+
+transport:
+  ssh_key: ~/.ssh/emea-sa-shared
+
+suites:
+  - name: default
+    run_list:
+      - recipe[cis-el7-l1-hardening::enable_sudo_no_tty]
+      - recipe[cis-el7-l1-hardening::default]
+    attributes:
+    verifier:
+      inspec_tests:
+        - ../../complianceProfiles/cis-lite/cis-rhel7-level1

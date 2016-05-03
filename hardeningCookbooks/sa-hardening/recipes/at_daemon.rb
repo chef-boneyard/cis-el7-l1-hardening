@@ -1,4 +1,4 @@
-# Cookbook Name:: cis-el7-l1-hardening
+# Cookbook Name:: sa-hardening
 # Recipe:: at_daemon
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.

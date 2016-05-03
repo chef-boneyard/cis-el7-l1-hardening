@@ -1,4 +1,4 @@
-# cis-el7-l1-hardening
+# sa-hardening
 
 This cookbook provides recipes for ensuring that a RHEL-7 system is compliant with the Lightweight CIS-L1 Chef Compliance profile.
 

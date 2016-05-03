@@ -96,6 +96,14 @@ replace_or_add "Set Idle Timeout Interval for User Login - ClientAliveCountMax" 
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login
 
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.10_Do_Not_Allow_Users_to_Set_Environment_Options
+replace_or_add "Do Not Allow Users to Set Environment Options" do
+  path "/etc/ssh/sshd_config"
+  pattern "PermitUserEnvironment.*"
+  line "PermitUserEnvironment no"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.10_Do_Not_Allow_Users_to_Set_Environment_Options
+
 # Begin fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
 replace_or_add "Set a DenyUsers config up" do
   path "/etc/ssh/sshd_config"

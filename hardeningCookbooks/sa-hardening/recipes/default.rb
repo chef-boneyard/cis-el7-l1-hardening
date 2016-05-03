@@ -12,6 +12,7 @@ include_recipe 'sa-hardening::at_daemon'
 include_recipe 'sa-hardening::user-mgmt'
 include_recipe 'sa-hardening::network-packet-remediation'
 include_recipe 'sa-hardening::login_banners'
+include_recipe 'sa-hardening::core_dumps'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

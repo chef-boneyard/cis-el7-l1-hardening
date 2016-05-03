@@ -103,3 +103,28 @@ replace_or_add "Do Not Allow Users to Set Environment Options" do
   line "PermitUserEnvironment no"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.10_Do_Not_Allow_Users_to_Set_Environment_Options
+
+# Begin fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
+replace_or_add "Set a DenyUsers config up" do
+  path "/etc/ssh/sshd_config"
+  pattern "DenyUsers.*"
+  line "DenyUsers root"
+end
+
+replace_or_add "Set a DenyGroups config up" do
+  path "/etc/ssh/sshd_config"
+  pattern "DenyGroups.*"
+  line "DenyGroups root"
+end
+
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config
+file '/etc/ssh/sshd_config' do
+  action :create
+  mode 0600
+  owner 0
+  group 0
+end
+
+# End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config

@@ -1,18 +1,18 @@
 #
-# Cookbook Name:: sa-hardening
+# Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: default
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 # Recipe includes
-include_recipe 'sa-hardening::ssh'
-include_recipe 'sa-hardening::avahi'
-include_recipe 'sa-hardening::cron'
-include_recipe 'sa-hardening::at_daemon'
-include_recipe 'sa-hardening::user-mgmt'
-include_recipe 'sa-hardening::network-packet-remediation'
-include_recipe 'sa-hardening::login_banners'
-include_recipe 'sa-hardening::core_dumps'
+include_recipe 'cis-el7-l1-hardening::ssh'
+include_recipe 'cis-el7-l1-hardening::avahi'
+include_recipe 'cis-el7-l1-hardening::cron'
+include_recipe 'cis-el7-l1-hardening::at_daemon'
+include_recipe 'cis-el7-l1-hardening::user-mgmt'
+include_recipe 'cis-el7-l1-hardening::network-packet-remediation'
+include_recipe 'cis-el7-l1-hardening::login_banners'
+include_recipe 'cis-el7-l1-hardening::core_dumps'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sa-hardening
+# Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: ssh
 # Remediation for SSH specific controls
 #

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sa-hardening::default' do
+describe 'cis-el7-l1-hardening::default' do
   # Serverspec examples can be found at
   # http://serverspec.org/resource_types.html
   it 'does something' do

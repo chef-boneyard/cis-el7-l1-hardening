@@ -21,6 +21,6 @@ transport:
 suites:
   - name: default
     run_list:
-      - recipe[sa-hardening::enable_sudo_no_tty]
-      - recipe[sa-hardening::default]
+      - recipe[cis-el7-l1-hardening::enable_sudo_no_tty]
+      - recipe[cis-el7-l1-hardening::default]
     attributes:

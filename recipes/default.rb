@@ -31,10 +31,10 @@ file '/boot/grub2/grub.cfg' do
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_1.5.2_Set_Permissions_on_bootgrub2grub.cfg
 
-# Start fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask        
-replace_or_add "Set Daemon umask" do        
-  path "/etc/sysconfig/init"        
-  pattern "umask 027"        
-  line "umask 027"        
-end        
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask
+replace_or_add "Set Daemon umask" do
+  path "/etc/sysconfig/init"
+  pattern "umask 027"
+  line "umask 027"
+end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask

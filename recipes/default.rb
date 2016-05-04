@@ -38,3 +38,11 @@ replace_or_add "Set Daemon umask" do
   line "umask 027"
 end
 # End fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask
+
+# Start fix for xccdf_org.cisecurity.benchmarks_rule_5.1.5_Configure_rsyslog_to_Send_Logs_to_a_Remote_Log_Host
+replace_or_add "Configure rsyslog to send logs to remote host" do
+  path "/etc/rsyslog.conf"
+  pattern "#*.* @@remote-host:514"
+  line "*.* @@remote-host:514"
+end
+# End fix for xccdf_org.cisecurity.benchmarks_rule_5.1.5_Configure_rsyslog_to_Send_Logs_to_a_Remote_Log_Host

@@ -6,6 +6,6 @@ description 'Installs/Configures cis-el7-l1-hardening'
 long_description 'Installs/Configures cis-el7-l1-hardening'
 issues_url 'https://github.com/chef-customers/cis-el7-l1-hardening/issues'
 source_url 'https://github.com/chef-customers/cis-el7-l1-hardening'
-version '0.4.1'
+version '0.5.0'
 
 depends 'line', '~> 0.6.3'

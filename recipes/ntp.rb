@@ -25,7 +25,7 @@ when 'rhel'
     # Correct ntp.conf config to conform to:
     # /^\s*restrict\s+default(?=[^#]*\s+kod)(?=[^#]*\s+nomodify)(?=[^#]*\s+notrap)(?=[^#]*\s+nopeer)(?=[^#]*\s+noquery)(\s+kod|\s+nomodify|\s+notrap|\s+nopeer|\s+noquery)*\s*(?:#.*)?$/
     replace_or_add 'Add kod to default restrict list in ntp.conf for IP V4' do
-      path '/etc/ntp.conf v4'
+      path '/etc/ntp.conf'
       pattern "^restrict\sdefault"
       line 'restrict default kod nomodify notrap nopeer noquery'
     end

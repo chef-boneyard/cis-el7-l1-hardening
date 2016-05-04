@@ -8,6 +8,10 @@ driver:
   security_group_ids: ['sg-50658837']
   subnet_id: subnet-4bdd1d2f
   retryable_tries: 120
+  tags: {
+    Name: "cis-el7-l1-hardening-kitchen",
+    created-by: "test-kitchen"
+  }
 
 provisioner:
   name: chef_solo

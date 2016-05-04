@@ -34,13 +34,13 @@ when 'rhel'
 
 # Start fix for hardening of cronfiles
     ['/etc/cron.d', '/etc/cron.monthly', '/etc/cron.weekly',
-      '/etc/cron.daily', '/etc/cron.hourly'].each do |crondir|
-        directory crondir do
-          mode '0700'
-          owner 'root'
-          group 'root'
-          action :create
-        end
+     '/etc/cron.daily', '/etc/cron.hourly'].each do |crondir|
+       directory crondir do
+        mode '0700'
+        owner 'root'
+        group 'root'
+        action :create
+       end
     end
 
     ['/etc/crontab', '/etc/anacrontab'].each do |cronfile|

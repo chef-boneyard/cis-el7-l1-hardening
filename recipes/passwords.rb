@@ -44,7 +44,7 @@ when 'rhel'
     line 'ucredit = -1'
   end
 
-  execute "Set Password Expiring Warning Days in /etc/shadow" do
+  execute 'Set Password Expiring Warning Days in /etc/shadow' do
     command "/usr/bin/sed -i 's/::\\([^:]*:[^:]*:\\)$/:7:\\1/g' /etc/shadow"
     only_if "/usr/bin/grep '::\\([^:]*:[^:]*:\\)$' /etc/shadow"
   end
@@ -55,7 +55,7 @@ when 'rhel'
     line 'PASS_MAX_DAYS	90'
   end
 
-  execute "Set Password Expiration Days in /etc/shadow" do
+  execute 'Set Password Expiration Days in /etc/shadow' do
     command "/usr/bin/sed -i 's/:\\(9[1-9]\\|[1-9][0-9]\\{2,\\}\\)\\?:\\([^:]*:[^:]*:[^:]*:$\\)/:90:\\2/g' /etc/shadow"
     only_if "/usr/bin/grep ':\\(9[1-9]\\|[1-9][0-9]\\{2,\\}\\)\\?:[^:]*:[^:]*:[^:]*:$' /etc/shadow"
   end
@@ -66,7 +66,7 @@ when 'rhel'
     line 'PASS_MIN_DAYS	7'
   end
 
-  execute "Set Password Change Minimum Number of Days in /etc/shadow" do
+  execute 'Set Password Change Minimum Number of Days in /etc/shadow' do
     command "/usr/bin/sed -i 's/:[0-6]\\?:\\([^:]*:[^:]*:[^:]*:[^:]*:$\\)/:7:\\1/g' /etc/shadow"
     only_if "/usr/bin/grep ':[0-6]\\?:[^:]*:[^:]*:[^:]*:[^:]*:$' /etc/shadow"
   end

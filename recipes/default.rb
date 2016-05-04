@@ -13,6 +13,7 @@ include_recipe 'cis-el7-l1-hardening::user-mgmt'
 include_recipe 'cis-el7-l1-hardening::network-packet-remediation'
 include_recipe 'cis-el7-l1-hardening::login_banners'
 include_recipe 'cis-el7-l1-hardening::core_dumps'
+include_recipe 'cis-el7-l1-hardening::passwords'
 
 # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 package 'firewalld'

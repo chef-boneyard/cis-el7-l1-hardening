@@ -17,6 +17,7 @@ when 'rhel'
     include_recipe 'cis-el7-l1-hardening::login_banners'
     include_recipe 'cis-el7-l1-hardening::core_dumps'
     include_recipe 'cis-el7-l1-hardening::passwords'
+    include_recipe 'cis-el7-l1-hardening::rsyslog'
 
     # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
     package 'firewalld'
@@ -47,8 +48,8 @@ when 'rhel'
       action :install
     end
 
-    replace_or_add "Set Daemon umask" do
-      path "/etc/sysconfig/init"
+    replace_or_add 'Set Daemon umask' do
+      path '/etc/sysconfig/init'
       pattern "umask 027"
       line "umask 027"
     end

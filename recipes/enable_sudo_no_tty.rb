@@ -4,7 +4,18 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-#execute 'sed -i \'s/^Defaults    requiretty/# Defaults    requiretty/g\' /etc/sudoers'
+# Ensure sudo is installed
+package 'Install sudo' do
+  package_name 'sudo'
+  action :install
+end
+
+file '/etc/sudoers' do
+  mode 0440
+  owner 'root'
+  group 'root'
+  action :create
+end
 
 delete_lines 'remove hash-comments from /some/file' do
   path '/etc/sudoers'

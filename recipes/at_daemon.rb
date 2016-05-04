@@ -4,7 +4,7 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 # Addresses xccdf_org.cisecurity.benchmarks_rule_6.1.10_Restrict_at_Daemon
-case node["platform_family"]
+case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0
 
@@ -15,8 +15,8 @@ when 'rhel'
     file '/etc/at.allow' do
       action :create
       mode 0700
-      owner 0
-      group 0
+      owner 'root'
+      group 'root'
     end
 
   end

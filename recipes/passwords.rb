@@ -1,5 +1,19 @@
-case node["platform_family"]
+case node['platform_family']
 when 'rhel'
+
+  # Ensure package is installed
+  package 'Install libpwquality' do
+    package_name 'libpwquality'
+    action :install
+  end
+
+  # Ensure configuration file is present
+  file '/etc/security/pwquality.conf' do
+    mode 0644
+    owner 'root'
+    group 'root'
+    action :create
+  end
 
   # xccdf_org.cisecurity.benchmarks_rule_6.3.2_Set_Password_Creation_Requirement_Parameters_Using_pam_pwquality
   replace_or_add 'Set Password mimimum length' do

@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-case node["platform_family"]
+case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0
 
@@ -39,6 +39,7 @@ when 'rhel'
           mode '0700'
           owner 'root'
           group 'root'
+          action :create
         end
     end
 
@@ -47,6 +48,7 @@ when 'rhel'
         mode '0700'
         owner 'root'
         group 'root'
+        action :create
       end
     end
 # End fix for hardening of cronfiles
@@ -59,12 +61,10 @@ when 'rhel'
     file '/etc/cron.allow' do
       action :create
       mode 0700
-      owner 0
-      group 0
+      owner 'root'
+      group 'root'
     end
 # End xccdf_org.cisecurity.benchmarks_rule_6.1.11_Restrict_atcron_to_Authorized_Users
-
-
 
   end
 end

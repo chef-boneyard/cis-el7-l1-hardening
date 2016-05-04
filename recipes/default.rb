@@ -18,6 +18,7 @@ when 'rhel'
     include_recipe 'cis-el7-l1-hardening::core_dumps'
     include_recipe 'cis-el7-l1-hardening::passwords'
     include_recipe 'cis-el7-l1-hardening::rsyslog'
+    include_recipe 'cis-el7-l1-hardening::ntp'
 
     # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
     package 'firewalld'

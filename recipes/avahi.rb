@@ -3,8 +3,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
-case node["platform_family"]
+case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0
     package 'Install Avahi Libs' do

@@ -6,7 +6,7 @@
 case node['platform_family']
 when 'rhel'
 
-# Start fix for xccdf_org.cisecurity.benchmarks_rule_8.2_Remove_OS_Information_from_Login_Warning_Banners
+  # Start fix for xccdf_org.cisecurity.benchmarks_rule_8.2_Remove_OS_Information_from_Login_Warning_Banners
   ['/etc/motd', '/etc/issue', '/etc/issue.net'].each do |loginfile|
     file loginfile do
       mode 0644
@@ -39,5 +39,5 @@ when 'rhel'
       only_if "/usr/bin/grep '\\\\s' #{loginfile}"
     end
   end
-# End fix for xccdf_org.cisecurity.benchmarks_rule_8.2_Remove_OS_Information_from_Login_Warning_Banners
+  # End fix for xccdf_org.cisecurity.benchmarks_rule_8.2_Remove_OS_Information_from_Login_Warning_Banners
 end

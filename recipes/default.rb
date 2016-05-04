@@ -24,7 +24,7 @@ when 'rhel'
 
     service 'firewalld' do
       supports :status => true
-      action [ :enable, :start ]
+      action [:enable, :start]
     end
     # End fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
 
@@ -50,8 +50,8 @@ when 'rhel'
 
     replace_or_add 'Set Daemon umask' do
       path '/etc/sysconfig/init'
-      pattern "umask 027"
-      line "umask 027"
+      pattern 'umask 027'
+      line 'umask 027'
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask
   end

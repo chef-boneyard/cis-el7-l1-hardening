@@ -14,10 +14,10 @@ when 'rhel'
     action :install
   end
 
-  replace_or_add "Restrict Core Dumps" do
+  replace_or_add 'Restrict Core Dumps' do
     path '/etc/security/limits.conf'
-    pattern "^\A\*\shard\score\s0"
-    line "* hard core 0"
+    pattern '^\A\*\shard\score\s0'
+    line '* hard core 0'
   end
 
 end

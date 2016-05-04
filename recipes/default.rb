@@ -7,19 +7,6 @@ case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0
 
-    # Recipe includes
-    include_recipe 'cis-el7-l1-hardening::ssh'
-    include_recipe 'cis-el7-l1-hardening::avahi'
-    include_recipe 'cis-el7-l1-hardening::cron'
-    include_recipe 'cis-el7-l1-hardening::at_daemon'
-    include_recipe 'cis-el7-l1-hardening::user-mgmt'
-    include_recipe 'cis-el7-l1-hardening::network-packet-remediation'
-    include_recipe 'cis-el7-l1-hardening::login_banners'
-    include_recipe 'cis-el7-l1-hardening::core_dumps'
-    include_recipe 'cis-el7-l1-hardening::passwords'
-    include_recipe 'cis-el7-l1-hardening::rsyslog'
-    include_recipe 'cis-el7-l1-hardening::ntp'
-
     # Fix for "xccdf_org.cisecurity.benchmarks_rule_4.7_Enable_firewalld"
     package 'firewalld'
 
@@ -55,5 +42,23 @@ when 'rhel'
       line 'umask 027'
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask
+
+    # Recipe includes
+    include_recipe 'cis-el7-l1-hardening::ssh'
+    include_recipe 'cis-el7-l1-hardening::avahi'
+    include_recipe 'cis-el7-l1-hardening::cron'
+    include_recipe 'cis-el7-l1-hardening::at_daemon'
+    include_recipe 'cis-el7-l1-hardening::network-packet-remediation'
+    include_recipe 'cis-el7-l1-hardening::login_banners'
+    include_recipe 'cis-el7-l1-hardening::core_dumps'
+    include_recipe 'cis-el7-l1-hardening::rsyslog'
+    include_recipe 'cis-el7-l1-hardening::ntp'
+    include_recipe 'cis-el7-l1-hardening::user-mgmt'
+
+    # This should be the last recipe thats run as it remediates
+    # the shadow file to a CIS compliant standard.
+
+    include_recipe 'cis-el7-l1-hardening::passwords'
+
   end
 end

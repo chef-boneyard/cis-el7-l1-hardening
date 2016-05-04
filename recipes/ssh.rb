@@ -19,11 +19,20 @@ when 'rhel'
       action [:enable, :start]
     end
 
+    # Resource for when a sshd restart is required
+    file 'sshd.changed' do
+      action :nothing
+      path '/tmp/.sshd-changed'
+      mode 0600
+      owner 'root'
+      group 'root'
+    end
+
     # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config
     file '/etc/ssh/sshd_config' do
       mode 0600
       owner 'root'
-      group 0
+      group 'root'
       action :create
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.3_Set_Permissions_on_etcsshsshd_config
@@ -33,7 +42,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "Protocol 1"
       line "Protocol 2"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.1_Set_SSH_Protocol_to_2
 
@@ -42,7 +51,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "MaxAuthTries.*"
       line "MaxAuthTries 4"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.5_Set_SSH_MaxAuthTries_to_4_or_Less
 
@@ -51,7 +60,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "X11Forwarding.*"
       line "X11Forwarding no"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.4_Disable_SSH_X11_Forwarding
 
@@ -60,7 +69,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "IgnoreRhosts.*"
       line "IgnoreRhosts yes"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes
 
@@ -69,13 +78,13 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "Banner.*"
       line "Banner /etc/ssh/sshd-banner"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
 
     delete_lines 'Remove no default banner comment' do
       path '/etc/ssh/sshd_config'
       pattern "# no default banner path"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.6_Set_SSH_IgnoreRhosts_to_Yes
 
@@ -84,7 +93,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "PermitEmptyPasswords.*"
       line "PermitEmptyPasswords no"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.9_Set_SSH_PermitEmptyPasswords_to_No
 
@@ -93,7 +102,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "PermitRootLogin.*"
       line "PermitRootLogin no"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.8_Disable_SSH_Root_Login
 
@@ -102,7 +111,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "HostbasedAuthentication.*"
       line "HostbasedAuthentication no"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.7_Set_SSH_HostbasedAuthentication_to_No
 
@@ -111,7 +120,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "LogLevel.*"
       line "LogLevel INFO"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.2_Set_LogLevel_to_INFO
 
@@ -120,14 +129,14 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "ClientAliveInterval.*"
       line "ClientAliveInterval 300"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
 
     replace_or_add 'Set Idle Timeout Interval for User Login - ClientAliveCountMax' do
       path '/etc/ssh/sshd_config'
       pattern "ClientAliveCountMax.*"
       line "ClientAliveCountMax 0"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.12_Set_Idle_Timeout_Interval_for_User_Login
 
@@ -136,7 +145,7 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "PermitUserEnvironment.*"
       line "PermitUserEnvironment no"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.10_Do_Not_Allow_Users_to_Set_Environment_Options
 
@@ -145,14 +154,14 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "DenyUsers.*"
       line "DenyUsers root"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
 
     replace_or_add 'Set a DenyGroups config up' do
       path '/etc/ssh/sshd_config'
       pattern "DenyGroups.*"
       line "DenyGroups root"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
 
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.13_Limit_Access_via_SSH
@@ -162,8 +171,15 @@ when 'rhel'
       path '/etc/ssh/sshd_config'
       pattern "Ciphers.*"
       line "Ciphers aes128-ctr,aes192-ctr,aes256-ctr"
-      notifies :restart, "service[sshd.service]"
+      notifies :create, 'file[sshd.changed]', :immediately
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.11_Use_Only_Approved_Cipher_in_Counter_Mode
+
+    execute 'Restart sshd only if config has changed' do
+      command 'rm -rf /tmp/.sshd-changed'
+      only_if 'test -f /tmp/.sshd-changed'
+      notifies :restart, 'service[sshd.service]', :immediately
+    end
+
   end
 end

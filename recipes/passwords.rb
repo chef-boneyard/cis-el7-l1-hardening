@@ -44,5 +44,31 @@ when 'rhel'
     line 'ucredit = -1'
   end
 
+  execute "Set Password Expiring Warning Days in /etc/shadow" do
+    command "/usr/bin/sed -i 's/::\\([^:]*:[^:]*:\\)$/:7:\\1/g' /etc/shadow"
+    only_if "/usr/bin/grep '::\\([^:]*:[^:]*:\\)$' /etc/shadow"
+  end
+
+  replace_or_add 'Set Password Expiration Days in login.defs' do
+    path '/etc/login.defs'
+    pattern '^PASS_MAX_DAYS\s+(9[1-9]|[1-9][0-9]{2,})?'
+    line 'PASS_MAX_DAYS	90'
+  end
+
+  execute "Set Password Expiration Days in /etc/shadow" do
+    command "/usr/bin/sed -i 's/:\\(9[1-9]\\|[1-9][0-9]\\{2,\\}\\)\\?:\\([^:]*:[^:]*:[^:]*:$\\)/:90:\\2/g' /etc/shadow"
+    only_if "/usr/bin/grep ':\\(9[1-9]\\|[1-9][0-9]\\{2,\\}\\)\\?:[^:]*:[^:]*:[^:]*:$' /etc/shadow"
+  end
+
+  replace_or_add 'Set Password Change Minimum Number of Days in login.defs' do
+    path '/etc/login.defs'
+    pattern 'PASS_MIN_DAYS\s+[0-6]?$'
+    line 'PASS_MIN_DAYS	7'
+  end
+
+  execute "Set Password Change Minimum Number of Days in /etc/shadow" do
+    command "/usr/bin/sed -i 's/:[0-6]\\?:\\([^:]*:[^:]*:[^:]*:[^:]*:$\\)/:7:\\1/g' /etc/shadow"
+    only_if "/usr/bin/grep ':[0-6]\\?:[^:]*:[^:]*:[^:]*:[^:]*:$' /etc/shadow"
+  end
   # xccdf_org.cisecurity.benchmarks_rule_6.3.2_Set_Password_Creation_Requirement_Parameters_Using_pam_pwquality
 end

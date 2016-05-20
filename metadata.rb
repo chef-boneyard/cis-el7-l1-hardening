@@ -1,7 +1,7 @@
 name 'cis-el7-l1-hardening'
 maintainer 'The Authors'
 maintainer_email 'emea-saleseng@chef.io'
-license 'all_rights'
+license 'apache2'
 description 'Installs/Configures cis-el7-l1-hardening'
 long_description 'Installs/Configures cis-el7-l1-hardening'
 issues_url 'https://github.com/chef-cookbooks/cis-el7-l1-hardening/issues'

@@ -1,12 +1,12 @@
 ---
 driver:
   name: ec2
-  aws_ssh_key_id: emea-sa-shared
+  aws_ssh_key_id:
   region: eu-west-1
   availability_zone: a
   instance_type: t2.micro
-  security_group_ids: ['sg-50658837']
-  subnet_id: subnet-4bdd1d2f
+  security_group_ids:
+  subnet_id:
   retryable_tries: 120
   tags: {
     Name: "cis-el7-l1-hardening-kitchen",
@@ -24,7 +24,7 @@ verifier:
   sudo: true
 
 transport:
-  ssh_key: ~/.ssh/emea-sa-shared
+  ssh_key: 
 
 suites:
   - name: default

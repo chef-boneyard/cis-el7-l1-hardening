@@ -9,6 +9,7 @@ when 'rhel'
 
     # Remiation recipes includes (alphabetical)
     include_recipe 'cis-el7-l1-hardening::at_daemon'
+    include_recipe 'cis-el7-l1-hardening::aide'
     include_recipe 'cis-el7-l1-hardening::avahi'
     include_recipe 'cis-el7-l1-hardening::core_dumps'
     include_recipe 'cis-el7-l1-hardening::cron'

@@ -9,6 +9,5 @@ file '/etc/motd' do
   content 'This system is managed by Chef and the cis-el7-l1-hardening cookbook.
 '
   mode '0644'
-#  not_if { ::File.exist?('/etc/motd') }
   only_if { ::File.empty?('/etc/motd') }
 end

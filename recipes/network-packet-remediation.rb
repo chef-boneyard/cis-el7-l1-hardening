@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: network-packet-remediation
 #
@@ -107,4 +108,20 @@ when 'rhel'
   end
   # End ICMP Redirect Acceptance
 
+  # Ensure IPv6 is disabled
+  replace_or_add 'enable_net.ipv6.conf.all.disable_ipv6=1' do
+    path '/etc/sysctl.conf'
+    pattern 'net.ipv6.conf.all.disable_ipv6'
+    line 'net.ipv6.conf.all.disable_ipv6=1'
+  end
+  execute 'update_net.ipv6.conf.all.disable_ipv6=1' do
+    command '/sbin/sysctl -w net.ipv6.conf.all.disable_ipv6=1'
+    not_if '/sbin/sysctl -q -n net.ipv6.conf.all.disable_ipv6 | /usr/bin/grep 1'
+  end
+  replace_or_add "disable IPV6" do
+    path "/etc/sysconfig/network"
+    pattern "NETWORKING_IPV6=*"
+    line "NETWORKING_IPV6=no"
+  end
+  # End of Ensure IPv6 is disabled
 end

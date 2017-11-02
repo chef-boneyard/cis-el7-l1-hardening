@@ -118,10 +118,10 @@ when 'rhel'
     command '/sbin/sysctl -w net.ipv6.conf.all.disable_ipv6=1'
     not_if '/sbin/sysctl -q -n net.ipv6.conf.all.disable_ipv6 | /usr/bin/grep 1'
   end
-  replace_or_add "disable IPV6" do
-    path "/etc/sysconfig/network"
-    pattern "NETWORKING_IPV6=*"
-    line "NETWORKING_IPV6=no"
+  replace_or_add 'disable IPV6' do
+    path '/etc/sysconfig/network'
+    pattern 'NETWORKING_IPV6=*'
+    line 'NETWORKING_IPV6=no'
   end
   # End of Ensure IPv6 is disabled
 end

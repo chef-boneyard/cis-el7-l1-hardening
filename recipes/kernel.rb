@@ -18,7 +18,7 @@
 # 3.5.3_Ensure_RDS_is_disabled: Ensure RDS is disabled
 # 3.5.4_Ensure_TIPC_is_disabled: Ensure TIPC is disabled
 
-modules = %w{ cramfs crc-itu-t dccp fat freevxfs hfs hfsplus jffs2 rds sctp squashfs tipc udf vfat }
+modules = %w( cramfs crc-itu-t dccp fat freevxfs hfs hfsplus jffs2 rds sctp squashfs tipc udf vfat )
 
 modules.each do |mod|
   execute "rmmod #{mod}" do

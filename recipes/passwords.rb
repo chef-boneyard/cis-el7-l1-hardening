@@ -72,7 +72,6 @@ when 'rhel'
   end
   # xccdf_org.cisecurity.benchmarks_rule_6.3.2_Set_Password_Creation_Requirement_Parameters_Using_pam_pwquality
 
-
   # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.3.4_Limit_Password_Reuse
   # Start fix for xccdf_org.cisecurity.benchmarks_rule_5.3.3_Ensure_password_reuse_is_limited
   file '/etc/pam.d/system-auth' do

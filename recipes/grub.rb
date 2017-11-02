@@ -3,7 +3,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_1.5.2_Set_Permissions_on_bootgrub2grub.cfg
 package 'Install grub2' do
   package_name 'grub2'

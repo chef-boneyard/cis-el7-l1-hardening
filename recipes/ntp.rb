@@ -6,15 +6,13 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.5_Configure_Network_Time_Protocol_NTP
 
-
 # Install Package NTP (also installs ntpd)
 case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0
-      package 'ntp' do
-        package_name 'ntp'
-        action :install
-      end
+    package 'ntp' do
+      action :install
+    end
 
     # Create file ntp.conf if not present
     file '/etc/ntp.conf' do

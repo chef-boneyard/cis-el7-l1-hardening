@@ -23,6 +23,7 @@ when 'rhel'
     include_recipe 'cis-el7-l1-hardening::ntp'
     include_recipe 'cis-el7-l1-hardening::rsyslog'
     include_recipe 'cis-el7-l1-hardening::ssh'
+    include_recipe 'cis-el7-l1-hardening::tcp_wrappers'
     include_recipe 'cis-el7-l1-hardening::user-mgmt'
 
     # This should be the last recipe thats run as it remediates

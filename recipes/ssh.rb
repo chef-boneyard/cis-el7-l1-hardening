@@ -175,6 +175,25 @@ when 'rhel'
     end
     # End fix for xccdf_org.cisecurity.benchmarks_rule_6.2.11_Use_Only_Approved_Cipher_in_Counter_Mode
 
+    # Start fix for xccdf_org.cisecurity.benchmarks_rule_5.2.12_Ensure_only_approved_MAC_algorithms_are_used
+    # taken from https://wiki.mozilla.org/Security/Guidelines/OpenSSH#Modern_.28OpenSSH_6.7.2B.29
+    replace_or_add 'Ensure only approved MAC algorithms are used' do
+      path '/etc/ssh/sshd_config'
+      pattern 'MACs.*'
+      line 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
+      notifies :create, 'file[sshd.changed]', :immediately
+    end
+    # End fix for xccdf_org.cisecurity.benchmarks_rule_5.2.12_Ensure_only_approved_MAC_algorithms_are_used
+
+    # Start fix for xccdf_org.cisecurity.benchmarks_rule_5.2.14_Ensure_SSH_LoginGraceTime_is_set_to_one_minute_or_less
+    replace_or_add 'Ensure SSH LoginGraceTime is set to one minute or less' do
+      path '/etc/ssh/sshd_config'
+      pattern 'LoginGraceTime*'
+      line 'LoginGraceTime 60'
+      notifies :create, 'file[sshd.changed]', :immediately
+    end
+    # End fix for xccdf_org.cisecurity.benchmarks_rule_5.2.14_Ensure_SSH_LoginGraceTime_is_set_to_one_minute_or_less
+
     execute 'Restart sshd only if config has changed' do
       command 'rm -rf /tmp/.sshd-changed'
       only_if 'test -f /tmp/.sshd-changed'

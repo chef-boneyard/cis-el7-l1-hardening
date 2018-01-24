@@ -2,8 +2,8 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: enable_sudo_no_tty
 #
-
 # Ensure sudo is installed
+
 package 'Install sudo' do
   package_name 'sudo'
   action :install

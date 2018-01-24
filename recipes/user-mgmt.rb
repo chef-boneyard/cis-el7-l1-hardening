@@ -3,7 +3,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: user-mgmt
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 
 case node['platform_family']
 when 'rhel'

@@ -1,7 +1,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: init
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_3.1_Set_Daemon_umask
 package 'Install initscripts' do

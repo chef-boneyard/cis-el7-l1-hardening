@@ -1,6 +1,6 @@
 # cis-el7-l1-hardening
 
-This cookbook provides a sample set of recipes for in order demonstrate on how you can make a RHEL 7 more CIS L1 compliant. It should be used in conjunction with [Chef Compliance](https://www.chef.io/compliance/)'s CIS L1 profile.
+This cookbook provides a recipes to make a RHEL 7 more CIS L1 compliant. It should be used in conjunction with [Chef Compliance](https://www.chef.io/compliance/)'s CIS L1 profile.
 
 *Note*: This cookbook does not make your system pass *all* CIS L1 tests; just a portion in order to demonstrate how you can harden your RHEL 7 instances.
 
@@ -30,7 +30,7 @@ This cookbook is maintained by Chef's Community Cookbook Engineering team. Our g
 
 ## License
 
-**Copyright:** 2017, Chef Software, Inc.
+**Copyright:** 2018, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");

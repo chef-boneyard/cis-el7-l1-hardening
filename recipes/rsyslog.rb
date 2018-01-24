@@ -1,7 +1,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: rsyslog
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_5.1.5_Configure_rsyslog_to_Send_Logs_to_a_Remote_Log_Host
 package 'Install rsyslog' do

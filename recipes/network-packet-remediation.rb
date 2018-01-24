@@ -2,7 +2,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: network-packet-remediation
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 
 case node['platform_family']
 when 'rhel'

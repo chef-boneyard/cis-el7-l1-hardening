@@ -1,0 +1,35 @@
+driver:
+  name: dokken
+  privileged: true # because Docker and SystemD/Upstart
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
+
+platforms:
+- name: centos-6
+  driver:
+    image: dokken/centos-6
+    pid_one_command: /sbin/init
+
+- name: centos-7
+  driver:
+    image: dokken/centos-7
+    pid_one_command: /usr/lib/systemd/systemd
+
+- name: fedora-25
+  driver:
+    image: dokken/fedora-25
+    pid_one_command: /usr/lib/systemd/systemd
+
+- name: fedora-26
+  driver:
+    image: dokken/fedora-26
+    pid_one_command: /usr/lib/systemd/systemd

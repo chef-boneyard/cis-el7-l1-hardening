@@ -2,7 +2,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: enable_sudo_no_tty
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 
 # Ensure sudo is installed
 package 'Install sudo' do

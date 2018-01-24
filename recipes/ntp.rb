@@ -3,7 +3,6 @@
 # Recipe:: ntp
 # Remediation for ntp specific controls
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_6.5_Configure_Network_Time_Protocol_NTP
 
 

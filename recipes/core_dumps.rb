@@ -1,8 +1,6 @@
 # Cookbook Name:: cis-el7-l1-hardening
 # Recipe:: core_dumps
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
-
 # Begin xccdf_org.cisecurity.benchmarks_rule_1.6.1_Restrict_Core_Dumps
 
 case node['platform_family']

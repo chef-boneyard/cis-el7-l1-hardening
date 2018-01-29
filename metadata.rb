@@ -12,3 +12,4 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 supports 'redhat'
 supports 'centos'
 depends 'line', '~> 0.6.3'
+depends 'os-hardening'

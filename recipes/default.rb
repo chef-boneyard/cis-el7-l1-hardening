@@ -3,6 +3,9 @@
 # Recipe:: default
 #
 
+include_recipe 'os-hardening::yum'
+include_recipe 'os-hardening::sysctl'
+
 case node['platform_family']
 when 'rhel'
   if node['platform_version'].to_f >= 7.0

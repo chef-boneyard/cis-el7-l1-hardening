@@ -3,10 +3,10 @@
 #
 
 # Start fix for xccdf_org.cisecurity.benchmarks_rule_1.5.2_Set_Permissions_on_bootgrub2grub.cfg
-package 'Install grub2' do
-  package_name 'grub2'
-  action :install
-end
+# package 'Install grub2' do
+#   package_name 'grub2'
+#   action :install
+# end
 
 file '/boot/grub2/grub.cfg' do
   mode '0600'

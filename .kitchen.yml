@@ -1,30 +1,30 @@
 ---
+
 driver:
-  name: ec2
-  aws_ssh_key_id:
-  region: eu-west-1
-  availability_zone: a
-  instance_type: t2.micro
-  security_group_ids:
-  subnet_id:
-  retryable_tries: 120
-  tags: {
-    Name: "cis-el7-l1-hardening-kitchen",
-    created-by: "test-kitchen"
-  }
+  name: vagrant
 
 provisioner:
   name: chef_solo
+<% if ENV['CHEF_VERSION'] %>
+  require_chef_omnibus: <%= ENV['CHEF_VERSION'] %>
+<% end %>
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
 
 platforms:
-  - name: rhel-7
+- name: centos-6
+- name: centos-7
+- name: oracle-6
+- name: oracle-7
+- name: fedora-25
+- name: fedora-26
+- name: rhel-7
 
 verifier:
   name: inspec
   sudo: true
-
-transport:
-  ssh_key: 
 
 suites:
   - name: default

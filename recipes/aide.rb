@@ -12,7 +12,7 @@ package 'Install AIDE' do
 end
 
 # xccdf_org.cisecurity.benchmarks_rule_1.3.2_Ensure_filesystem_integrity_is_regularly_checked:
-replace_or_add "Ensure filesystem integrity is regularly checked" do
+replace_or_add 'Ensure filesystem integrity is regularly checked' do
   path '/etc/crontab'
   pattern 'aide --check'
   line '05 3 * * * root /usr/sbin/aide --check'

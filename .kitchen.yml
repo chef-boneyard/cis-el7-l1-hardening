@@ -31,3 +31,6 @@ suites:
     run_list:
       - recipe[cis-el7-l1-hardening::enable_sudo_no_tty]
       - recipe[cis-el7-l1-hardening::default]
+    verifier:
+      inspec_tests:
+        - https://github.com/dev-sec/cis-dil-benchmark

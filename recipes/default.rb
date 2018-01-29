@@ -4,6 +4,7 @@
 #
 
 include_recipe 'os-hardening::yum'
+# CIS 1.1.1.1 - 1.1.1.8
 include_recipe 'os-hardening::sysctl'
 
 case node['platform_family']
